@@ -13,21 +13,39 @@ let repete = "sim";
 let arraylista = ["PEDRA", "PAPEL", "TESOURA"];
 let regras;
 let jogar;
+let nome;
+let pert1;
+let pert2;
 
 jogo: for (let i = 0; i != rodadas; ) {
   if (repete == "sim") {
     i = 0;
-    console.clear()
-    console.log('Bem vindo ao Jokenpô!!')
+    console.clear();
+    console.log('Bem vindo ao Jokenpô!!');
+    console.log();
+    console.log("Qual o seu nome?");
+    nome = prompt();
     console.log()
+    console.log(`Olá, ${nome}, vamos jogar uma partida de jokenpô? `);
+    console.log();
+    console.log("Digite sim ou nao, por favor:");
+    pert1 = prompt().toLowerCase();
+    if(pert1 == "nao"){
+      console.log("Você gostaria de sair?");
+      pert2 = prompt().toLowerCase();
+      } if (pert2 == "sim"){
+        break;
+      }else{
+        console.clear();
+      }
     console.log(`
         - Digite 1 para acessar as regras
-        - Aperte a tecla enter para jogar`)
-       regras = +prompt()
+        - Aperte a tecla enter para jogar`);
+       regras = +prompt();
        while (regras == 1){
-         console.clear()
+         console.clear();
          console.log(`
-         Olá Jogador
+         Olá ${nome}
          Você acaba de acessar as regras, aqui estão elas:
 
          1- Pedra ganha da tesoura, mas perde para o papel.
@@ -37,17 +55,17 @@ jogo: for (let i = 0; i != rodadas; ) {
          2- A maquina ou o jogador podem ser ganhadores e pode ter um empate.
          
          3- Se durante o jogo o jogador escolher tesoura e a maquina tambem, 
-         é considerado um empate e nenhum dos dois jogadores pontuam. `) 
-         console.log()
-         console.log("Digite - 1 para jogar")
+         é considerado um empate e nenhum dos dois jogadores pontuam. `);
+         console.log();
+         console.log("Digite - 1 para jogar");
          jogar = +prompt()
          if(jogar == 1 ){
            continue jogo;
          }else{
-           console.log("DIGITE - 1 PARA VOLTAR AO JOGO")
+           console.log("DIGITE - 1 PARA VOLTAR AO JOGO");
          }
        } 
-    console.log("Digite o número de rodadas que você quer jogar:");
+    console.log(`Digite o número de rodadas que você quer jogar ${nome}:`);
     rodadas = +prompt();
     while (i != rodadas) {
       let resp = Math.floor(3 * Math.random());
@@ -58,17 +76,17 @@ jogo: for (let i = 0; i != rodadas; ) {
       } else if (resp == 0) {
         (pc = 3), (resp = "TESOURA");
       }
-      console.log()
-      console.log(arraylista)
-      console.log()
+      console.log();
+      console.log(arraylista);
+      console.log();
       console.log(`selecione:
           1 - PEDRA
           2 - PAPEL
           3 - TESOURA`);
       let opcao = +prompt();
       while(isNaN(opcao) || (opcao != 1 ) && (opcao != 2) && (opcao != 3)){
-        console.log ('ESCOLHA UM NÚMERO DE 1 A 3 !!')  
-        console.log()
+        console.log ('ESCOLHA UM NÚMERO DE 1 A 3 !!');
+        console.log();
         console.log(`selecione:
           1 - PEDRA
           2 - PAPEL
@@ -84,7 +102,7 @@ jogo: for (let i = 0; i != rodadas; ) {
               
             }
             console.log()
-            console.log("Você:", opcao, "'vs'", "Maquina:", resp);
+            console.log(`${nome}:`, opcao, "|vs|", "Maquina:", resp);
             console.log()
             if (player == 3 && pc == 1) {
                 pontos1++, i++;
@@ -97,19 +115,19 @@ jogo: for (let i = 0; i != rodadas; ) {
             } else if (pc == player) {
                 i++;
             }
-        console.log("Sua pontuação = ", pontos1);
+        console.log(`pontuação de ${nome} = `, pontos1);
         console.log("Pontuação da máquina = ", pontos2);
         console.log()
         }
     if (pontos1 > pontos2) {
-      console.log("O JOGADOR VENCEU COM", pontos1, "pontos!");
+      console.log(`${nome} VENCEU COM`, pontos1, "pontos!");
     } else if (pontos2 > pontos1) {
       console.log("A MAQUINA VENCEU COM", pontos2, "pontos!");
     } else {
       console.log("EMPATOU!");
     }
     console.log()
-    console.log("OTIMA PARTIDA, GOSTARIA DE JOGAR NOVAMENTE?");
+    console.log(`OTIMA PARTIDA ${nome}, GOSTARIA DE JOGAR NOVAMENTE?`);
     repete = prompt().toLowerCase();
     if (repete == "sim") {
       (i = 0), (pontos1 = 0), (pontos2 = 0);
